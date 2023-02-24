@@ -17,6 +17,12 @@
         var inputValue = $(this).attr("value");
         $("." + inputValue).toggle();
     });
+    //new
+    $('input[type="button"]').click(function(){
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).toggle();
+    });
+    //end new
 });
 </script>
   <div class=checkboxes>
@@ -24,9 +30,10 @@
     <label><input type="checkbox" name="textCheckbox" value="overlay"> Labels</label><br>
     <H3><B>Ramps:</H3></B>
     <label><input type="checkbox" name="rampCheckbox" value="frontramp"> Front</label><br>
-    <label><input type="checkbox" name="rampCheckbox" value="ramp1"> Ramp1</label><br>
-    <label><input type="checkbox" name="rampCheckbox" value="ramp2"> Ramp2</label><br>
-    <label><input type="checkbox" name="rampCheckbox" value="ramp3"> Ramp3</label><br>
+    <label><input type="button" name="rampCycle" value="rightramp"> Right Ramps</label><br> //new
+    //<label><input type="checkbox" name="rampCheckbox" value="ramp1"> Ramp1</label><br>
+    //<label><input type="checkbox" name="rampCheckbox" value="ramp2"> Ramp2</label><br>
+    //<label><input type="checkbox" name="rampCheckbox" value="ramp3"> Ramp3</label><br>
   
     <h3><B>Decks:</B></h3>
     <label><input type="checkbox" name="deckCheckbox" value="deck1">	Deck1</label><br>
@@ -57,9 +64,10 @@
   
   <div class="background"></div>
   <div hidden class="frontramp" id="frontramp"></div>
-  <div hidden class="ramp1" id="ramp1"></div>
-  <div hidden class="ramp2" id="ramp2"></div>
-  <div hidden class="ramp3" id="ramp3"></div>
+  <div hidden class="rightramp" id="rightramp"></div> //new
+  //<div hidden class="ramp1" id="ramp1"></div>
+  //<div hidden class="ramp2" id="ramp2"></div>
+  //<div hidden class="ramp3" id="ramp3"></div>
   <div hidden class="deck1" id="deck1"></div>
   <div hidden class="deck2" id="deck2"></div>
   <div hidden class="deck3" id="deck3"></div>
@@ -124,6 +132,36 @@
         element.style.visibility = "hidden";
       }
     }
+    //new
+    function cycleRamps(className) {
+      if (element.style.visibility === "hidden") {
+        document.getElementById(className).src="ramp1.png";
+      }
+      else if(document.getElementById(className).src==="ramp1.png"){
+        document.getElementById(className).src="ramp2.png";
+      }
+      else if (document.getElementById(className).src==="ramp2.png"){
+        document.getElementById(className).src="ramp3.png";
+      }
+      else if (document.getElementById(className).src==="ramp3.png"){
+        document.getElementById(className).src="ramp12.png";
+      }
+      else if (document.getElementById(className).src==="ramp12.png"){
+        document.getElementById(className).src="ramp23.png";
+      }
+      else if (document.getElementById(className).src==="ramp23.png"){
+        document.getElementById(className).src="ramp123.png";
+      }
+      /*
+      else if (document.getElementById(className).src==="ramp123.png"){
+        document.getElementById(className).src="ramp13.png";
+      }*/ //in case they ever allow ramps 1&3 combo
+      
+      else {
+        document.getElementById(className).visibility = "hidden";
+      }
+    }
+    //end new
   </script>
 </body>
 </html>
